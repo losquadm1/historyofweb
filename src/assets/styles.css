@@ -10,6 +10,34 @@
   font-display: swap;
 }
 
+html,
+body {
+  min-height: 100%;
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+body > main {
+  flex: 1 0 auto;
+}
+
+body > footer {
+  margin-top: auto;
+}
+
+.home main,
+.aol main,
+.twitter .wrapper {
+  width: 100%;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 /* Command Prompt Era */
 
 .home{
@@ -286,6 +314,9 @@ https://codepen.io/chriscoyier/pen/qBNOVaW
   margin: auto;
   width: 800px;
   background-color: white;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
 /*
@@ -412,6 +443,7 @@ https://codepen.io/chriscoyier/pen/qBNOVaW
   grid-template-columns: 325px 453px;
   grid-column-gap: 20px;
   grid-template-areas: "sidebar main";
+  flex: 1 0 auto;
 }
 
 /*
@@ -514,6 +546,11 @@ https://codepen.io/chriscoyier/pen/qBNOVaW
   margin: 0;
   margin-top: 5px;
   margin-left: 10px;
+}
+
+.contact-images img {
+  width: 120px;
+  height: auto;
 }
 
 /*
@@ -846,6 +883,7 @@ https://codepen.io/chriscoyier/pen/qBNOVaW
   background-color: #e5e5e5;
   padding-top: 10px;
   height: 65px;
+  margin-top: auto;
 }
 
 .myspace footer a {
