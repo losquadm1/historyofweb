@@ -318,7 +318,7 @@ https://codepen.io/chriscoyier/pen/qBNOVaW
 
 .myspace {
   font-family: 'W95FA', verdana, arial, sans-serif, helvetica;
-  background-color: #e5e5e5;
+  background-color: #000000;
   font-size: 8pt;
   margin: 0;
 }
@@ -970,7 +970,7 @@ https://codepen.io/chriscoyier/pen/qBNOVaW
 .twitter {
   font-family: verdana, arial, sans-serif, helvetica;
   scale:2rem;
-  background-color: #e5e5e5;
+  background-color: #000000;
   margin: 0;
 }
 
@@ -1409,5 +1409,6 @@ https://codepen.io/chriscoyier/pen/qBNOVaW
 }
 .twitter {
   margin: 0; /* Remove default margins */
+  background-color: #000000;
   overflow-x: hidden; /* Disable horizontal scrolling */
 }
