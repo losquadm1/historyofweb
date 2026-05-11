@@ -5,23 +5,30 @@
     {% include 'header' %}
     <main id="main-content">
       <div class="typing-container"></div>
-                <br><br>
-      <p>C:\users\HostBot\Desktop>Welcome! 
-                <br><br>
-      Description:The internet wasn't always the way it was now,
-     before social media, before the world wide web, there was
-      just what is now known as "command prompt" 
-                <br><br><br>
-      Directory:
-      [While it may not be up to code, I can help show you what
-     the internet was once like]
-                <br><br><br>
-      Continuation Parameters:
-             ?/                 If you wish to see the evolution of the
-      internet please tap [chat icon] to continue...
-                <br><br><br>
-    C:\users\HostBot\Desktop<br>
-     C:\users\HostBot\Desktop>Evolution</p>
+      <p id="cmnd-typed-text" class="cmnd-typed-text" aria-live="polite"></p>
+
+      <script type="text/plain" id="cmnd-text-template">
+C:\users\HostBot\Desktop>Welcome!
+
+
+Description:The internet wasn't always the way it was now, before social media, before the world wide web, there was just what is now known as "command prompt"
+
+
+
+Directory:
+[While it may not be up to code, I can help show you what the internet was once like]
+
+
+
+Continuation Parameters:
+    ?/                 If you wish to see the evolution of the internet please tap [chat icon] to continue...
+
+
+
+C:\users\HostBot\Desktop
+C:\users\HostBot\Desktop>Evolution
+      </script>
     </main>
+    <script src="/assets/styles.js" defer></script>
   </body>
 </html>
