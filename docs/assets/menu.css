@@ -1,0 +1,718 @@
+:root {
+  /* this is the height of the header bar */
+  --header-height: 0px;
+  /* this is the background color of the header bar and panel */
+  --menu-bg: hsl(0, 0%, 0%);
+  --menu-bg2: #003499;
+  --menu-bg3: #ede9d9;
+  --menu-bg4: #ffffff;
+  --menu-highlight-hover: white;
+}
+
+@font-face {
+  font-family: 'W95FA';
+  src: url('w95fa.woff2') format('woff2'),
+      url('w95fa.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Command Prompt Era */
+
+.wfont {
+  color: #05FF00;
+  font-family: 'W95FA', sans-serif;
+}
+* {
+
+  /* leave this on - it helps size things consistently */
+  box-sizing: content-box;
+  /* border: 1px solid red; */
+
+
+.main-nav .nav-items-list {
+  color: white !important;
+}
+
+.skip-link {
+  opacity: 0;
+  position: absolute;
+  z-index: 10000;
+  top: -10rem;
+  left: 1rem;
+  background-color: white;
+  font-size: 2rem;
+  text-decoration: none;
+  padding: 1rem;
+}
+.skip-link:focus {
+  top: 1rem;
+  opacity: 1;
+  transition: opacity 0.2s;
+}
+/* this is the component that contains the top nav bar */
+.main-nav-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 70px;
+  position: fixed;
+  bottom: 0px;
+  background: var(--menu-bg);
+}
+/* this is img element that is the header logo */
+.header-logo {
+  padding: 1rem;
+}
+.header-logo-link {
+  display: flex;
+  align-items: center;
+}
+.header-logo-link:hover {
+  background-color: var(--menu-highlight-hover);
+  transition: background-color 0.3s;
+}
+.nav-items-list {
+  display: none;
+  flex-direction: column;
+  position: relative;
+  top: var(--header-height);
+  left: 0;
+  width: 100%;
+  /* set this to auto if you don't want the mobile nav to fill the screen */
+
+  height: calc(100vh - 130px);
+  /* if you want the flyout nav to have a different background color, put it here */
+  background: var(--menu-bg);
+  transition: all 0.3s;
+  z-index: -10;
+}
+
+/* this is the class that is applied when the mobile nav disappears */
+.nav-items-list-hidden {
+  opacity: 100;
+  pointer-events: none;
+  /* you can replace this with a different transform to change the direction it moves out in */
+  transform: translateY(-100px);
+  transition: all 0.3s;
+}
+/* this is the styling that is applied to the menu links on mobile */
+.nav-items-list a {
+  text-decoration: none;
+  font-size: 2rem;
+  padding: 1rem;
+  text-align: center;
+  transition: background-color 0.3s;
+}
+.nav-items-list a:hover {
+  background-color: var(--menu-highlight-hover);
+  transition: background-color 0.3s;
+}
+/* this is the element that contains the hamburger button that positions it vertically within the header bar */
+.nav-button-right {
+  height: var(--header-height);
+  display: flex;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  right: 0;
+}
+.sr-only {
+  opacity: 0 !important;
+  position: absolute !important;
+  pointer-events: none !important;
+}
+
+/* this is the actual button that toggles the menu */
+.btn-toggle-menu {
+  display: none;
+  flex-direction: column;
+  gap: 0px;
+  align-items: center;
+  padding: 0rem;
+  border: none;
+  background: transparent;
+  z-index: 1000;
+}
+.btn-toggle-menu:hover {
+  background-color: white;
+}
+/* this makes sure the header doesn't cover any page content */
+main {
+  margin-top: var(--header-height);
+}
+
+/* this media query sets the point where the layout transitions from top bar to hamburger */
+@media (min-width: 0px) {
+  /* this makes the top bar menu items go across in a row on desktop */
+  nav.main-nav {
+    display: flex;
+    flex-direction: row;
+    align-items: left;
+  }
+  /* this sets the gap between the logo and the nav items */
+  .main-nav-container {
+    gap: 1rem;
+  }
+  /* this is the element that contains the 3 nav items on DESKTOP */
+  .nav-items-list {
+    display: flex;
+    flex-direction: row;
+    position: relative;
+    left: 0;
+    justify-content: center;
+    height: auto;
+    gap: 1rem;
+    z-index: 100;
+  }
+  /* this is the selector that makes sure the nav is always visible on desktop  */
+  .nav-items-list-hidden {
+    opacity: 1;
+    pointer-events: all;
+    transform: none;
+    transition: all 0.3s;
+  }
+  /* this is the selector that hides the nav on desktop */
+  .btn-toggle-menu {
+    display: none;
+  }
+
+  /* this is the styling that is applied to the menu links on desktop */
+  .nav-items-list a {
+    font-size: 1.5rem;
+    padding: 0px 19px;
+  }
+}
+/** menu 2 
+:root {
+  /* this is the height of the header bar */
+  --header-height: 0px;
+  /* this is the background color of the header bar and panel */
+  --menu-bg: #000000;
+  --menu-bg3: #ede9d9;
+  --menu-highlight-hover: white;
+}
+
+@font-face {
+  font-family: 'W95FA';
+  src: url('w95fa.woff2') format('woff2'),
+      url('w95fa.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Command Prompt Era */
+
+.wfont {
+  color: #05FF00;
+  font-family: 'W95FA', sans-serif;
+  }
+* {
+
+  /* leave this on - it helps size things consistently */
+  box-sizing: content-box;
+  /* border: 1px solid red; */
+
+
+.main-nav .nav-items-list2 {
+  color: white !important;
+}
+
+.skip-link2 {
+  opacity: 0;
+  position: absolute;
+  z-index: 10000;
+  top: -10rem;
+  left: 1rem;
+  background-color: white;
+  font-size: 2rem;
+  text-decoration: none;
+  padding: 1rem;
+}
+.skip-link:focus {
+  top: 1rem;
+  opacity: 1;
+  transition: opacity 0.2s;
+}
+/* this is the component that contains the top nav bar */
+.main-nav-container2 {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
+  height: 70px;
+  position: fixed;
+  bottom: 0px;
+  background: var(--menu-bg2);
+}
+/* this is img element that is the header logo */
+.header-logo2 {
+  padding: 1rem;
+}
+.header-logo-link2 {
+  display: flex;
+  align-items: center;
+}
+.header-logo-link:hover2 {
+  background-color: var(--menu-highlight-hover);
+  transition: background-color 0.3s;
+}
+.nav-items-list2 {
+  display: none;
+  flex-direction: column;
+  position: relative;
+  top: var(--header-height);
+  left: 0;
+  width: 100%;
+  /* set this to auto if you don't want the mobile nav to fill the screen */
+
+  height: calc(100vh - 130px);
+  /* if you want the flyout nav to have a different background color, put it here */
+  background: var(--menu-bg2);
+  transition: all 0.3s;
+  z-index: -10;
+}
+
+/* this is the class that is applied when the mobile nav disappears */
+.nav-items-list-hidden2 {
+  opacity: 100;
+  pointer-events: none;
+  /* you can replace this with a different transform to change the direction it moves out in */
+  transform: translateY(-100px);
+  transition: all 0.3s;
+}
+/* this is the styling that is applied to the menu links on mobile */
+.nav-items-list2 a {
+  text-decoration: none;
+  font-size: 2rem;
+  padding: 1rem;
+  text-align: center;
+  transition: background-color 0.3s;
+}
+
+.nav-items-list2 img {
+  width: 63px;
+  height: auto;
+}
+
+.nav-items-list a:hover2 {
+  background-color: var(--menu-highlight-hover);
+  transition: background-color 0.3s;
+}
+/* this is the element that contains the hamburger button that positions it vertically within the header bar */
+.nav-button-right2 {
+  height: var(--header-height);
+  display: flex;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  right: 0;
+}
+.sr-only2 {
+  opacity: 0 !important;
+  position: absolute !important;
+  pointer-events: none !important;
+}
+
+/* this is the actual button that toggles the menu */
+.btn-toggle-menu2 {
+  display: none;
+  flex-direction: column;
+  gap: 0px;
+  align-items: center;
+  padding: 0rem;
+  border: none;
+  background: transparent;
+  z-index: 1000;
+}
+.btn-toggle-menu2:hover {
+  background-color: white;
+}
+/* this makes sure the header doesn't cover any page content */
+main {
+  margin-top: var(--header-height);
+}
+
+/* this media query sets the point where the layout transitions from top bar to hamburger */
+@media (min-width: 0px) {
+  /* this makes the top bar menu items go across in a row on desktop */
+  nav.main-nav2 {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+  /* this sets the gap between the logo and the nav items */
+  .main-nav-container2 {
+    gap: 1rem;
+  }
+  /* this is the element that contains the 3 nav items on DESKTOP */
+  .nav-items-list2 {
+    display: flex;
+    flex-direction: row;
+    position: static;
+    justify-content: space-around;
+    height: auto;
+    gap: 1rem;
+    z-index: 100;
+  }
+  /* this is the selector that makes sure the nav is always visible on desktop  */
+  .nav-items-list-hidden2 {
+    opacity: 1;
+    pointer-events: all;
+    transform: none;
+    transition: all 0.3s;
+  }
+  /* this is the selector that hides the nav on desktop */
+  .btn-toggle-menu2 {
+    display: none;
+  }
+
+/* this is the styling that is applied to the menu links on desktop */
+.nav-items-list2 a {
+  font-size: 1.5rem;
+  padding: 0px 19px;
+}
+}
+
+/** menu 3 
+
+ }
+* {
+  /* leave this on - it helps size things consistently */
+  box-sizing: content-box;
+  /* border: 1px solid red; */
+
+
+.main-nav3 .nav-items-list3 {
+  color: white !important;
+}
+
+.skip-link {
+  opacity: 0;
+  position: absolute;
+  z-index: 10000;
+  top: -10rem;
+  left: 1rem;
+  background-color: white;
+  font-size: 2rem;
+  text-decoration: none;
+  padding: 1rem;
+}
+.skip-link:focus {
+  top: 1rem;
+  opacity: 1;
+    transition: opacity 0.2s;
+}
+/* this is the component that contains the top nav bar */
+.main-nav-container3 {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100%;
+  height: 70px;
+  right: 1px;
+  border-top: 2px black solid;
+  position: fixed;
+  bottom: 0px;
+  background: var(--menu-bg3);
+}
+/* this is img element that is the header logo */
+.header-logo3 {
+  padding: 1rem;
+}
+.header-logo-link3 {
+  display: flex;
+  align-items: center;
+}
+.header-logo-link3:hover {
+  background-color: var(--menu-highlight-hover);
+  transition: background-color 0.3s;
+}
+.nav-items-list3 {
+  display: none;
+  flex-direction: column;
+  position: relative;
+  top: var(--header-height);
+  left: 0;
+  width: 100%;
+  /* set this to auto if you don't want the mobile nav to fill the screen */
+
+  height: calc(100vh - 130px);
+  /* if you want the flyout nav to have a different background color, put it here */
+  background: var(--menu-bg3);
+  transition: all 0.3s;
+  z-index: -10;
+}
+
+/* this is the class that is applied when the mobile nav disappears */
+.nav-items-list-hidden3 {
+  opacity: 100;
+  pointer-events: none;
+  /* you can replace this with a different transform to change the direction it moves out in */
+  transform: translateY(-100px);
+  transition: all 0.3s;
+}
+/* this is the styling that is applied to the menu links on mobile */
+.nav-items-list3 a {
+  text-decoration: none;
+  font-size: 2rem;
+  padding: 1rem;
+  text-align: center;
+  transition: background-color 0.3s;
+}
+.nav-items-list3 a:hover {
+  background-color: var(--menu-highlight-hover);
+  transition: background-color 0.3s;
+}
+/* this is the element that contains the hamburger button that positions it vertically within the header bar */
+.nav-button-right3 {
+  height: var(--header-height);
+  display: flex;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  right: 0;
+}
+.sr-only3 {
+  opacity: 0 !important;
+  position: absolute !important;
+  pointer-events: none !important;
+}
+
+/* this is the actual button that toggles the menu */
+.btn-toggle-menu3 {
+  display: none;
+  flex-direction: column;
+  gap: 0px;
+  align-items: center;
+  padding: 0rem;
+  border: none;
+  background: transparent;
+  z-index: 1000;
+}
+.btn-toggle-menu:hover {
+  background-color: white;
+}
+/* this makes sure the header doesn't cover any page content */
+main {
+  margin-top: var(--header-height);
+}
+
+/* this media query sets the point where the layout transitions from top bar to hamburger */
+@media (min-width: 0px) {
+  /* this makes the top bar menu items go across in a row on desktop */
+  nav.main-nav3 {
+    display: flex;
+    flex-direction: row;
+    align-items: left;
+  }
+  /* this sets the gap between the logo and the nav items */
+  .main-nav-container3 {
+    gap: 1rem;
+  }
+  /* this is the element that contains the 3 nav items on DESKTOP */
+  .nav-items-list3 {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    position: static;
+    height: auto;
+    gap: 1rem;
+    z-index: 100;
+  }
+  /* this is the selector that makes sure the nav is always visible on desktop  */
+  .nav-items-list-hidden3 {
+    opacity: 1;
+    pointer-events: all;
+    transform: none;
+    transition: all 0.3s;
+  }
+  /* this is the selector that hides the nav on desktop */
+  .btn-toggle-menu {
+    display: none;
+  }
+
+  /* this is the styling that is applied to the menu links on desktop */
+  .nav-items-list3 a {
+    font-size: 1.5rem;
+    padding: 0px 19px;
+  }
+}
+
+/** menu 4
+
+ }
+* {
+  /* leave this on - it helps size things consistently */
+  box-sizing: content-box;
+  /* border: 1px solid red; */
+
+
+.main-nav4 .nav-items-list3 {
+  color: white !important;
+}
+
+.skip-link {
+  opacity: 0;
+  position: absolute;
+  z-index: 10000;
+  top: -10rem;
+  left: 1rem;
+  background-color: white;
+  font-size: 2rem;
+  text-decoration: none;
+  padding: 1rem;
+}
+.skip-link:focus {
+  top: 1rem;
+  opacity: 1;
+  transition: opacity 0.2s;
+}
+/* this is the component that contains the top nav bar */
+.main-nav-container4 {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100%;
+  height: 70px;
+  right: 1px;
+  border-top: 2px rgb(218, 222, 226) solid;
+  position: fixed;
+  bottom: 0px;
+  background: var(--menu-bg4);
+}
+/* this is img element that is the header logo */
+.header-logo4 {
+  padding: 1rem;
+}
+.header-logo-link4 {
+  display: flex;
+  align-items: center;
+}
+.header-logo-link4:hover {
+  background-color: var(--menu-highlight-hover);
+  transition: background-color 0.3s;
+}
+.nav-items-list4 {
+  display: none;
+  flex-direction: column;
+  position: relative;
+  top: var(--header-height);
+  left: 0;
+  width: 100%;
+  /* set this to auto if you don't want the mobile nav to fill the screen */
+
+  height: calc(100vh - 130px);
+  /* if you want the flyout nav to have a different background color, put it here */
+  background: var(--menu-bg4);
+  transition: all 0.3s;
+  z-index: -10;
+}
+
+/* this is the class that is applied when the mobile nav disappears */
+.nav-items-list-hidden4 {
+  opacity: 100;
+  pointer-events: none;
+  /* you can replace this with a different transform to change the direction it moves out in */
+  transform: translateY(-100px);
+  transition: all 0.3s;
+}
+/* this is the styling that is applied to the menu links on mobile */
+.nav-items-list4 a {
+  text-decoration: none;
+  font-size: 2rem;
+  padding: 1rem;
+  text-align: center;
+  transition: background-color 0.3s;
+}
+
+.nav-items-list4 img {
+  width: 63px;
+  height: auto;
+}
+
+.nav-items-list4 a:hover {
+  background-color: var(--menu-highlight-hover);
+  transition: background-color 0.3s;
+}
+/* this is the element that contains the hamburger button that positions it vertically within the header bar */
+.nav-button-right4 {
+  height: var(--header-height);
+  display: flex;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  right: 0;
+}
+.sr-only3 {
+  opacity: 0 !important;
+  position: absolute !important;
+  pointer-events: none !important;
+}
+
+/* this is the actual button that toggles the menu */
+.btn-toggle-menu4 {
+  display: none;
+  flex-direction: column;
+  gap: 0px;
+  align-items: center;
+  padding: 0rem;
+  border: none;
+  background: transparent;
+  z-index: 1000;
+}
+.btn-toggle-menu:hover {
+  background-color: white;
+}
+/* this makes sure the header doesn't cover any page content */
+main {
+  margin-top: var(--header-height);
+}
+
+/* this media query sets the point where the layout transitions from top bar to hamburger */
+@media (min-width: 0px) {
+  /* this makes the top bar menu items go across in a row on desktop */
+  nav.main-nav4 {
+    display: flex;
+    flex-direction: row;
+    align-items: left;
+  }
+  /* this sets the gap between the logo and the nav items */
+  .main-nav-container4 {
+    gap: 1rem;
+  }
+  /* this is the element that contains the 3 nav items on DESKTOP */
+  .nav-items-list4 {
+    display: flex;
+    flex-direction: row;
+    position: static;
+    justify-content: space-around;
+    height: auto;
+    gap: 1rem;
+    z-index: 100;
+  }
+  /* this is the selector that makes sure the nav is always visible on desktop  */
+  .nav-items-list-hidden4 {
+    opacity: 1;
+    pointer-events: all;
+    transform: none;
+    transition: all 0.3s;
+  }
+  /* this is the selector that hides the nav on desktop */
+  .btn-toggle-menu {
+    display: none;
+  }
+
+  /* this is the styling that is applied to the menu links on desktop */
+  .nav-items-list4 a {
+    font-size: 1.5rem;
+    padding: 0px 19px;
+  }
+}}

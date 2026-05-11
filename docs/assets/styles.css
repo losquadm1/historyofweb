@@ -1,0 +1,1414 @@
+/* you can put styles in here :) */
+
+/* GLOBAL  things on every page */
+@font-face {
+  font-family: 'W95FA';
+  src: url('w95fa.woff2') format('woff2'),
+      url('w95fa.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+html,
+body {
+  min-height: 100%;
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+body > main {
+  flex: 1 0 auto;
+}
+
+body > footer {
+  margin-top: auto;
+}
+
+.home main,
+.aol main,
+.twitter .wrapper {
+  width: 100%;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.home main {
+  padding-bottom: 82px;
+}
+
+/* Command Prompt Era */
+
+.home{
+  color: #05FF00;
+  font-family: 'W95FA', sans-serif;
+  font-size: 1.1em;
+  line-height:20px
+}
+
+.cmnd-typed-text {
+  white-space: pre-wrap;
+  margin: 0;
+  min-height: clamp(18rem, 45vh, 24rem);
+  font-size: clamp(0.9rem, 2.2vw, 1.1rem);
+  line-height: 1.25;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+
+@media (max-width: 640px) {
+  .home main {
+    padding-left: 12px;
+    padding-right: 12px;
+  }
+}
+
+.cmnd-typed-text.is-typing::after {
+  content: "_";
+  animation: cmnd-cursor-blink 0.9s steps(1, end) infinite;
+}
+
+.cmnd-typed-text.is-typing {
+  cursor: pointer;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cmnd-typed-text.is-typing::after {
+    animation: none;
+  }
+
+  .cmnd-typed-text.is-typing {
+    cursor: default;
+  }
+}
+
+@keyframes cmnd-cursor-blink {
+  50% {
+    opacity: 0;
+  }
+}
+
+/*  Aol */
+
+.aol {
+  font-family: 'W95FA';
+  background-color: #000000
+}
+
+:root {
+  --window-background: rgb(236, 233, 216);
+  --grey: rgb(195, 192, 182);
+
+  --blue-darker: hsl(218, 100%, 35%);
+  --blue-dark: hsl(218, 100%, 40%);
+  --blue: hsl(218, 100%, 45%);
+  --blue-light: hsl(218, 100%, 55%);
+
+  --red-darker: hsl(8, 76%, 42%);
+  --red-dark: hsl(8, 76%, 47%);
+  --red: hsl(8, 76%, 52%);
+
+  --white: hsl(0, 100%, 100%);
+  
+  --message-font-size: 1em;
+
+  box-sizing: border-box;
+}
+
+.aol body {
+  background-image: url(https://live.staticflickr.com/3566/3546825048_9e1308f22a_b.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.window {
+  width: 100%;
+}
+
+.window__header {
+  display: flex;
+  justify-content: space-between;
+  background: linear-gradient(var(--blue), var(--blue-light));
+  padding: 0.25em 0.25em;
+  border-radius: 0.35em 0.35em 0 0;
+}
+
+.window__header h1 {
+  font-family: 'w95fa';
+  margin: 0;
+  padding: 0;
+  font-size: 1em;
+  align-self: flex;
+  color: white;
+  font-weight: 300;
+  text-shadow: 1px 1px black;
+}
+
+.window__body {
+  padding: 0.5em;
+  border: 2px solid var(--blue-light);
+  border-top: none;
+  background: var(--window-background);
+}
+
+.header-button {
+  color: white;
+  border: 1px solid white;
+  border-radius: 0.25em;
+  width: 2em;
+  height: 2em;
+  font-family: 'w95fa';
+  text-align: center;
+  vertical-align: bottom;
+  cursor: pointer;
+  background: var(--blue) radial-gradient(ellipse at 0% 0%, rgba(255, 255, 255, 0.45) 0%, var(--blue) 100%);
+}
+
+.header-button:hover {
+  background: var(--blue-dark) radial-gradient(ellipse at 0% 0%, rgba(255, 255, 255, 0.45) 0%, var(--blue-dark) 100%)
+}
+
+.header-button:active {
+  background: var(--blue-darker) radial-gradient(ellipse at 0% 0%, rgba(255, 255, 255, 0.45) 0%, var(--blue-darker) 100%);
+  box-shadow: inset 0px 0px 5px 0px rgba(0, 0, 0, 0.25);
+}
+
+.header-button--danger {
+  background: var(--red) radial-gradient(ellipse at 0% 0%, rgba(255, 255, 255, 0.45) 0%, var(--red) 65%);
+}
+
+.header-button--danger > div {
+  height: 2em;
+  width: 2em;
+}
+.header-button--danger > div:first-of-type {
+  position: absolute;
+  border-left: 2px solid var(--white);
+  transform: rotate(45deg) translateY(1px) translateX(12px);
+}
+.header-button--danger > div:last-of-type {
+  border-right: 2px solid var(--white);
+  transform: rotate(-45deg) translateY(1px) translateX(-12px);
+}
+
+.header-button--danger:hover {
+  background: var(--red-dark) radial-gradient(ellipse at 0% 0%, rgba(255, 255, 255, 0.45) 0%, var(--red-dark) 65%);
+}
+
+.header-button--danger:active {
+  background: var(--red-darker) radial-gradient(ellipse at 0% 0%, rgba(255, 255, 255, 0.45) 0%, var(--red-darker) 65%);
+}
+
+.header-button--minimize, .header-button--expand {
+  padding: 0;
+}
+
+.header-button--expand > div {
+  border: 1px solid var(--white);
+  border-top-width: 0.25em;
+  height: 0.75em;
+  width: 1em;
+  margin: 0 auto;
+}
+
+.header-button--minimize > div {
+  border-bottom: .25em solid var(--white);
+  height: 0.75em;
+  width: 0.75em;
+  margin: 0 auto;
+  transform: translateX(-2px); 
+}
+
+.window__navigation {
+  background: var(--window-background);
+  border-left: 2px solid var(--blue-light);
+  border-right: 2px solid var(--blue-light);
+  font-size: 0.75em;
+}
+
+.window__navigation ul {
+  border-bottom: 1px solid var(--grey);
+  list-style: none;
+  display: flex;
+  padding: 0.25em;
+  margin: 0;
+}
+
+.window__navigation ul li + li {
+  margin-left: 1em;
+}
+
+.link-shortcut {
+  text-decoration: underline;
+}
+
+.messages {
+  padding: 0.25em;
+  background: white;
+  min-height: 6em;
+  margin: 0 0 1em 0;
+  border: 2px solid black;
+  border-bottom-color: rgb(249, 248, 244);
+  border-right-color: rgb(249, 248, 244);
+}
+
+.message {
+  list-style: none;
+  margin: 0 0 0.1em;
+  padding: 0;
+}
+
+.message__author {
+  font-family: 'w95fa';
+  color: green;
+  font-weight: 500;
+}
+
+.message__text {
+  font-family: 'w95fa';
+  font-weight: 500;
+  font-size: var(--message-font-size);
+}
+
+.message--user .message__author {
+  color: blue;
+}
+
+textarea {
+  width: 100%;
+  font-size: var(--message-font-size);
+  font-weight: 300;
+}
+
+.message-actions {
+  display: flex;
+}
+
+.message-actions__textarea {
+  font-family: 'W95FA', sans-serif;
+  border: 2px solid black;
+  border-bottom-color: rgb(249, 248, 244);
+  border-right-color: rgb(249, 248, 244);
+}
+
+.message-actions__send {
+  font-family: 'W95FA', sans-serif;
+}
+
+
+/* Myspace
+https://codepen.io/chriscoyier/pen/qBNOVaW
+*/
+.myspace main-nav {
+  scale: 6rem;
+}
+.myspace {
+  box-sizing: border-box;
+}
+.myspace *,
+.myspace *:before,
+.myspace *:after {
+  box-sizing: inherit;
+}
+
+.myspace {
+  font-family: 'W95FA', verdana, arial, sans-serif, helvetica;
+  background-color: #000000;
+  font-size: 8pt;
+  margin: 0;
+}
+
+.myspace a {
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.myspace a:link {
+  color: #003399;
+}
+
+.myspace a:visited {
+  color: #003399;
+}
+
+.myspace a:hover {
+  text-decoration: underline;
+  color: #cc0000;
+}
+
+.myspace h2 {
+  font-size: 9pt;
+  margin: 0;
+  font-weight: bold;
+}
+
+.myspace p {
+  line-height: 1.3;
+}
+
+/*
+  ========================================
+  Master Container
+  ========================================
+  */
+.master-container {
+  margin: auto;
+  width: 800px;
+  background-color: white;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/*
+  ========================================
+  Main Header
+  ========================================
+  */
+.main-header {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 151px;
+  background-color: rgb(0, 51, 153);
+  color: #ffffff;
+}
+
+.main-header ul {
+  list-style-type: none;
+}
+
+.main-header a:link {
+  color: #ffffff;
+  font-weight: normal;
+}
+
+.main-header a:visited {
+  color: #ffffff;
+}
+
+/*
+  ========================================
+  Search Bar
+  ========================================
+  */
+.search-bar {
+  display: grid;
+  grid-template-columns: 0.25fr 1fr 0.25fr;
+}
+
+.search-bar form {
+  justify-self: center;
+  margin: 0;
+}
+
+.search-bar form [type="text"] {
+  width: 160px;
+}
+
+.search-bar form [type="radio"] {
+  margin-right: 0.33rem;
+}
+
+.search-bar ul {
+  display: flex;
+}
+
+.submit-btn {
+  margin: 8px;
+  border: 1px solid black;
+  padding: 2px 7px;
+  background-color: #e0ffff;
+  font-size: 10px;
+  border-color: rgb(186, 186, 186);
+}
+
+.topnav {
+  padding: 0;
+  margin: 8px;
+}
+
+.topnav li:first-child::after {
+  content: "|";
+  margin: 0.33rem;
+}
+
+.myspace .home {
+  justify-self: start;
+}
+
+.signup {
+  justify-self: end;
+}
+
+/*
+  ========================================
+  Navigation Bar
+  ========================================
+  */
+.myspace .navbar {
+  display: flex;
+  align-items: center;
+  margin-top: auto;
+  background-color: rgb(102, 153, 204);
+  height: 26px;
+}
+
+.myspace .navbar ul {
+  display: flex;
+  margin: 0 auto;
+  padding: 0;
+}
+
+.myspace .navbar li::after {
+  content: "|";
+  margin: 0.33rem;
+  color: black;
+}
+
+.myspace .navbar li:last-child::after {
+  content: "";
+}
+
+.myspace .navbar a:hover {
+  color: #003399;
+}
+
+/*
+  ========================================
+  Page Content Container
+  ========================================
+  */
+.page-content-container {
+  display: grid;
+  grid-template-columns: 325px 453px;
+  grid-column-gap: 20px;
+  grid-template-areas: "sidebar main";
+  flex: 1 0 auto;
+}
+
+/*
+  ========================================
+  Profile Sidebar Column
+  ========================================
+  */
+.profile-sidebar {
+  grid-area: sidebar;
+  margin-left: 27px;
+  width: 300px;
+}
+
+.myspace h1 {
+  font-size: 12.25pt;
+  font-weight: bold;
+  margin-top: 15px;
+  margin-bottom: 0px;
+}
+
+.profile-sidebar ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+/*
+  ========================================
+  Profile Picture Container
+  ========================================
+  */
+.profile-picture-container {
+  display: grid;
+  grid-template-columns: 170px 115px;
+  grid-template-rows: 176px;
+  grid-column-gap: 15px;
+  margin-bottom: 12px;
+}
+
+.profile-picture-container p {
+  margin: 0;
+}
+
+.profile-pic {
+  grid-area: 1/1;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.personal-msg {
+  grid-area: 1/2;
+  margin: 0;
+}
+
+.gender-age {
+  grid-area: 1/2;
+}
+
+.gender-age li:first-child {
+  margin-top: 28px;
+}
+
+.last-login {
+  grid-area: 1/2;
+  align-self: end;
+}
+
+.last-login li:last-child {
+  margin-bottom: 15px;
+}
+
+.pics-videos {
+  grid-area: 1/1;
+  justify-self: center;
+  align-self: end;
+}
+
+/*
+  ========================================
+  Contact Box
+  ========================================
+  */
+.contact-box {
+  border: 2px solid rgb(102, 153, 204);
+  height: 149px;
+  width: 300px;
+  margin-bottom: 24px;
+}
+
+.contact-box h2 {
+  color: white;
+  background-color: rgb(102, 153, 204);
+  height: 17px;
+  padding-left: 10px;
+}
+
+.contact-images {
+  display: grid;
+  grid-template-columns: 150px 150px;
+  margin: 0;
+  margin-top: 5px;
+  margin-left: 10px;
+}
+
+.contact-images img {
+  width: 120px;
+  height: auto;
+}
+
+/*
+  ========================================
+  MySpace URL
+  ========================================
+  */
+.myspace-url-box {
+  border: 1px solid rgb(102, 153, 204);
+  height: 26px;
+  margin-bottom: 24px;
+}
+
+.myspace-url-box h3,
+.myspace-url-box p {
+  margin: 0;
+  padding: 0;
+}
+
+.myspace-url-box h3 {
+  font-size: 8pt;
+  padding-left: 2px;
+}
+
+.myspace-url-box p {
+  padding-left: 6px;
+}
+
+/*
+  ========================================
+  Sidebar Table Class
+  ========================================
+  */
+.sidebar-table {
+  border: 2px solid rgb(102, 153, 204);
+  display: table;
+  border-collapse: separate;
+  border-spacing: 3px;
+}
+
+.sidebar-table-h2 {
+  background-color: rgb(102, 153, 204);
+  color: white;
+  text-align: left;
+  height: 17px;
+  padding-left: 15px;
+  padding-top: 2px;
+}
+
+.sidebar-table-header {
+  vertical-align: top;
+  text-align: left;
+  width: 107px;
+  background-color: rgb(177, 208, 240);
+  color: #336699;
+  padding: 3px;
+  font-weight: bold;
+  font-size: 8pt;
+}
+
+.sidebar-table-data {
+  width: 184px;
+  background-color: rgb(213, 232, 251);
+  padding: 3px;
+}
+
+/*
+  ========================================
+  Interests
+  ========================================
+  */
+.interests p {
+  margin-top: 0;
+}
+
+.interests p:only-child,
+.interests p:last-child {
+  margin-bottom: 0;
+}
+
+.interests table {
+  margin-bottom: 13px;
+}
+
+/*
+  ========================================
+  Details
+  ========================================
+  */
+.details table {
+  margin-bottom: 22px;
+}
+
+/*
+  ========================================
+  Schools
+  ========================================
+  */
+.schools .sidebar-table-header {
+  width: 228px;
+  color: black;
+  font-weight: normal;
+}
+
+.schools .sidebar-table-data {
+  width: 63px;
+  text-align: center;
+  vertical-align: top;
+}
+
+.schools ul {
+  margin-bottom: 2em;
+}
+
+/*
+  ========================================
+  Main Column
+  ========================================
+  */
+.myspace main {
+  grid-area: main;
+}
+
+/*
+  ========================================
+  User Network
+  ========================================
+  */
+.user-network {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 433px;
+  margin: auto;
+  height: 75px;
+  border: 2px solid black;
+  margin-top: 13px;
+}
+
+.user-network h2 {
+  font-size: 12pt;
+}
+
+/*
+  ========================================
+  Blog
+  ========================================
+  */
+.blog {
+  display: grid;
+  grid-auto-rows: 29px;
+  flex-direction: column;
+  margin-top: 13px;
+  margin-left: 12px;
+  margin-bottom: 16px;
+}
+
+.blog p {
+  margin-top: 3px;
+}
+
+/*
+  ========================================
+  Blurbs
+  ========================================
+  */
+.main-section-header {
+  background-color: #ffcc99;
+  padding-top: 3px;
+  padding-bottom: 3px;
+  margin-bottom: 8px;
+}
+
+.main-section-h2 {
+  color: #ff6600;
+  margin-left: 20px;
+}
+
+.blurbs h3 {
+  margin: 0;
+  color: #ff6600;
+  font-size: 9pt;
+  margin-left: 15px;
+}
+
+.blurbs p:nth-of-type(5) {
+  margin-bottom: 2em;
+}
+
+.blurbs p {
+  margin: 0 10px 15px 15px;
+}
+
+.info {
+  color: green;
+  font-weight: bold;
+}
+
+/*
+  ========================================
+  Friend Space
+  ========================================
+  */
+.friends header {
+  margin-bottom: 6px;
+}
+
+.friends p:nth-of-type(1) {
+  margin-top: 0;
+  margin-left: 15px;
+}
+
+.focus-highlight {
+  color: #cc0000;
+  font-weight: normal;
+  font-size: 10pt;
+}
+
+.friend-pic-container {
+  display: grid;
+  grid-template-columns: repeat(4, 109px);
+  grid-template-rows: 160px 1px;
+}
+
+.friend-pic-container figure {
+  margin: 0;
+}
+
+.friend-pic-container figcaption {
+  text-align: center;
+}
+
+.friend-pic-container img {
+  display: block;
+  margin: auto;
+}
+
+.friends-list-link {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.friends-list-link {
+  margin-top: 7px;
+  margin-right: 8px;
+  margin-bottom: 30px;
+}
+
+.friends-list-link a {
+  color: #cc0000;
+}
+
+/*
+  ========================================
+  Comment Wall
+  ========================================
+  */
+.comment-wall .main-section-header {
+  margin-bottom: 3px;
+}
+
+.comment-wall .main-section-h2 {
+  margin-bottom: 0;
+}
+
+#comment-counter {
+  margin-top: 0;
+  margin-left: 15px;
+  margin-bottom: 3px;
+}
+
+.comment-wall table {
+  margin: auto;
+  margin-bottom: 5px;
+}
+
+.comment-wall th {
+  background-color: rgb(255, 153, 51);
+  width: 158px;
+  padding: 3px;
+  vertical-align: top;
+}
+
+.comment-wall td {
+  vertical-align: top;
+  background-color: rgb(249, 214, 180);
+  width: 269px;
+  padding: 3px;
+}
+
+.comment-wall figcaption,
+.comment-wall figure {
+  margin: 0;
+}
+
+.comment-wall figcaption {
+  margin-bottom: 1em;
+}
+
+.comment-wall figure {
+  margin-bottom: 49.33px;
+}
+
+.comment-wall h3 {
+  font-size: 10pt;
+  margin: 0;
+  margin-bottom: 1em;
+}
+
+.comment-wall p {
+  font-weight: normal;
+  text-align: left;
+  margin: 0;
+}
+
+#add-comment {
+  text-align: right;
+  margin-right: 10px;
+  margin-bottom: 5px;
+}
+
+/*
+  ========================================
+  Footer
+  ========================================
+  */
+.myspace footer {
+  display: grid;
+  grid-template-rows: 16px 39px;
+  background-color: #e5e5e5;
+  padding-top: 10px;
+  height: 65px;
+  margin-top: auto;
+}
+
+.myspace footer a {
+  text-decoration: underline;
+  font-weight: normal;
+  font-size: 8pt;
+}
+
+.myspace footer ul {
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.myspace footer li:after {
+  content: " | ";
+  font-weight: normal;
+}
+
+#last:after {
+  content: none;
+}
+
+.myspace footer small {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  height: 100%;
+  font-size: 8pt;
+  font-weight: normal;
+}
+
+
+/* twitter */
+.twitter {
+  font-family: verdana, arial, sans-serif, helvetica;
+  scale:2rem;
+  background-color: #000000;
+  margin: 0;
+}
+
+.twitter  * {
+  box-sizing: border-box;
+}
+
+:root {
+  --color-1: #fefefd;
+  --color-2: #0f1419;
+  --color-3: #536471;
+  --color-4: #0575cc;
+  --color-5: rgba(15, 20, 25, 0.1);
+  --color-6: #1d9bf0;
+}
+
+.wrapper {
+  max-width: 800px;
+  min-width: 300px;
+  margin: 0 auto;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.twitter  header {
+  padding: 0 0px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+
+.header-container {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  cursor: pointer;
+  padding: 8px 0;
+}
+
+.icon {
+  filter: invert(4%) sepia(4%) saturate(6722%) hue-rotate(169deg)
+    brightness(99%) contrast(92%);
+}
+
+.icon-frame {
+  padding: 8px;
+  min-width: 32px;
+  min-height: 32px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  background-color: rgba(15, 20, 25, 0);
+  transition-duration: 0.5s;
+}
+
+.icon-frame:hover {
+  border-radius: 50%;
+  background-color: var(--color-5);
+}
+
+.account-header {
+  flex: 1;
+}
+
+.account-name {
+  font-weight: 800;
+  font-size: 21px;
+  line-height: 1.1;
+  white-space: nowrap;
+  margin-bottom: 0;
+}
+
+.account-name a {
+  text-decoration: none;
+  color: var(--color-2);
+}
+
+.verified-badge {
+  margin-left: -5px;
+}
+
+.twitter  small {
+  color: var(--color-3);
+  line-height: 1;
+}
+
+.twitter  main {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.hero {
+  position: relative;
+  display: flex;
+}
+
+.twitter-banner {
+  width: 100%;
+  height: 100%;
+}
+
+.profile-pic-container {
+  max-width: 23%;
+  max-height: 23%;
+  position: absolute;
+  top: 68%;
+  left: 6%;
+}
+
+.twitter-profile-picture {
+  border: 4px solid var(--color-1);
+  border-radius: 50%;
+  cursor: pointer;
+  transition-duration: 0.3s;
+  margin-left: -20px;
+  margin-top: -30px;
+}
+
+.twitter-profile-picture:hover {
+  filter: brightness(0.9);
+  transform: scale(1.002);
+}
+
+.profile-details {
+  padding: 6px 14px 0px 14px;
+}
+
+.twitter  nav {
+  padding: 6px 0 14px 0;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 8px;
+}
+
+.frame-cover {
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+}
+
+.profile-botton {
+  background-color: var(--color-2);
+  border: 1px solid var(--color-2);
+  border-radius: 9999px;
+  transition-duration: 0.5s;
+}
+
+.profile-botton a {
+  text-decoration: none;
+  display: inline-block;
+  padding: 8px 21px;
+  font-weight: 800;
+  color: var(--color-1);
+}
+
+.profile-botton:hover {
+  border: 1px solid var(--color-3);
+  background-color: var(--color-3);
+}
+
+.twitter  h1 {
+    margin-top: -15px;
+    margin-bottom: 0px;
+    font-size: 21px;
+    font-weight: 900;
+}
+
+.account-info {
+  margin-block: 15px;
+}
+
+.info-container-1 {
+  display: flex;
+  gap: 10px;
+  align-items: flex-end;
+  color: var(--color-3);
+  font-size: 13px;
+  flex-wrap: wrap;
+}
+
+.info-container-1 p {
+  white-space: nowrap;
+  display: flex;
+  align-items: flex-end;
+  gap: 4px;
+}
+
+.location {
+  letter-spacing: 1.5px;
+  font-size: 12px;
+}
+
+.web-site a {
+  text-decoration: none;
+  color: var(--color-4);
+}
+
+.info-icon {
+  filter: invert(38%) sepia(9%) saturate(878%) hue-rotate(164deg)
+    brightness(95%) contrast(90%);
+  position: relative;
+  bottom: 2px;
+}
+
+.info-follow {
+  font-size: 13px;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.info-follow span {
+  color: var(--color-3);
+}
+
+.info-follow p {
+  cursor: pointer;
+  border-bottom: 1px solid transparent;
+  line-height: 0.8;
+}
+
+.info-follow p:hover {
+  border-bottom: 1px solid var(--color-2);
+}
+
+.tweets-nav {       
+      display: flex;
+      list-style-type: none;
+      flex-direction: row;
+      padding: 0px;
+    }
+
+.tweets-nav li {
+  flex: 1;
+  text-align: center;
+  transition-duration: 0.2s;
+  cursor: pointer;
+}
+
+.tweets-nav li div {
+  text-decoration: none;
+  padding: 0 16px;
+  width: 100%;
+  white-space: nowrap;
+  color: var(--color-3);
+  font-weight: 700;
+}
+
+.tweets-nav li div p {
+  transition-duration: 0.2s;
+}
+
+.tweets-nav li:hover {
+  background-color: var(--color-5);
+}
+
+.tweets-nav li div p::after {
+  content: "";
+  display: block;
+  width: 100%;
+  height: 0px;
+  background-color: transparent;
+  border-radius: 9999px;
+  position: absolute;
+  bottom: 0;
+  transition-duration: 0.2s;
+}
+
+.tweets-nav li:focus div p {
+  color: var(--color-2);
+}
+
+.tweets-nav li:focus div p::after {
+  background-color: var(--color-6);
+}
+
+@media only screen and (max-width: 520px) {
+  .profile-pic-container {
+    max-width: 28%;
+    max-height: 28%;
+  }
+
+ .twitter  h1 {
+    margin-top: 40px;
+  }
+}
+
+@media only screen and (max-width: 420px) {
+  .account-name {
+    font-size: 18px;
+  }
+
+ .twitter  small {
+    font-size: 12px;
+  }
+
+  .profile-pic-container {
+    max-width: 28%;
+    max-height: 28%;
+  }
+
+ .twitter  h1 {
+    margin-top: 20px;
+  }
+
+  .tweets-nav {
+    font-size: 15px;
+  }
+
+  .tweets-nav li div {
+    padding: 0 10px;
+  }
+}
+
+@media only screen and (max-width: 320px) {
+  .account-name {
+    font-size: 16px;
+  }
+
+.twitter  small {
+    font-size: 11px;
+  }
+
+  .profile-pic-container {
+    max-width: 28%;
+    max-height: 28%;
+  }
+
+ .twitter h1 {
+    margin-top: 15px;
+  }
+
+  .tweets-nav {
+    font-size: 13px;
+  }
+
+  .tweets-nav li div {
+    padding: 0 8px;
+  }
+}
+
+
+.twitter  body {
+  font-family: Arial,sans-serif;
+  color: #292f33;
+}
+
+
+/* This element would be replaced by where you want the templates. */
+.tweetEntry-tweetHolder {
+  border-left: 1px solid #e1e8ed;
+  border-right: 1px solid #e1e8ed;
+  border-top: 1px solid #e1e8ed;
+  width: 620px;
+  margin: auto;
+  border-radius: 5px;
+}
+
+/* The action list is optional. */
+.tweetEntry-action-list {
+  display: block;
+  line-height: 18px;
+  margin-left: 58px;
+  margin-top: 10px;
+  color: #292f33;
+}
+.fa-reply:hover {
+  color: #292f33;
+}
+.fa-retweet:hover {
+  color: #5cd65c;
+}
+.fa-heart:hover {
+  color: #ff3333;
+}
+/************************/
+
+.tweetEntry {
+  border-bottom: 1px solid #e1e8ed;
+  cursor: pointer;
+  min-height: 51px;
+  padding: 9px 12px;
+}
+.tweetEntry-content {
+  display: block;
+  font-size: 13px;
+  margin-left: 58px;
+  font-size: 13px;
+}
+.tweetEntry-account-group {
+  color: #8899a6;
+  padding: 0px;
+  text-decoration: none;
+  line-height: 20px;
+}
+.tweetEntry-avatar {
+  float: left;
+  height: 65px;
+  width: 65px;
+  margin-left: -58px;
+  border-radius: 5px;
+}
+.tweetEntry-fullname {
+  font-weight: bold;
+  font-size: 13px;
+  color: #292f33;
+  padding: 0px 0px 0px 14px;
+}
+.tweetEntry-username {
+  font-weight: bold;
+  font-size: 13px;
+  color: #b1bbc3;
+  padding: 0px;
+}
+.tweetEntry-timestamp {
+  font-size: 13px;
+  color: #b1bbc3;
+  padding: 0px;
+}
+.tweetEntry-text-container {
+  font-size: 13px;
+  color: #292f33;
+  line-height: 18px;
+  padding: 0px 0px 0px 20px
+}
+.tweetEntry-bio {
+  font-size: 13px;
+  line-height: 18px;
+}
+
+
+.second-container {
+  max-width: 618px;
+  margin: auto;
+  background-color: white;
+}
+.twitter {
+  margin: 0; /* Remove default margins */
+  background-color: #000000;
+  overflow-x: hidden; /* Disable horizontal scrolling */
+}
