@@ -38,6 +38,10 @@ body > footer {
   margin-right: auto;
 }
 
+.home main {
+  padding-bottom: 82px;
+}
+
 /* Command Prompt Era */
 
 .home{
@@ -45,6 +49,48 @@ body > footer {
   font-family: 'W95FA', sans-serif;
   font-size: 1.1em;
   line-height:20px
+}
+
+.cmnd-typed-text {
+  white-space: pre-wrap;
+  margin: 0;
+  min-height: clamp(18rem, 45vh, 24rem);
+  font-size: clamp(0.9rem, 2.2vw, 1.1rem);
+  line-height: 1.25;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+
+@media (max-width: 640px) {
+  .home main {
+    padding-left: 12px;
+    padding-right: 12px;
+  }
+}
+
+.cmnd-typed-text.is-typing::after {
+  content: "_";
+  animation: cmnd-cursor-blink 0.9s steps(1, end) infinite;
+}
+
+.cmnd-typed-text.is-typing {
+  cursor: pointer;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cmnd-typed-text.is-typing::after {
+    animation: none;
+  }
+
+  .cmnd-typed-text.is-typing {
+    cursor: default;
+  }
+}
+
+@keyframes cmnd-cursor-blink {
+  50% {
+    opacity: 0;
+  }
 }
 
 /*  Aol */

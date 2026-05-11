@@ -1,156 +1,87 @@
-const Title = (props) => {
-  const {chatName} = props;
-  return (
-    <div className="header">
-      {chatName} - Instant Message
-      <ul className="header__links">
-        <li className="header__minimize">_</li>
-        <li className="header__maximize">[]</li>
-        <li className="header__close">&times;</li>
-      </ul>
-    </div>
-  );
-}
+(function () {
+  function startTypewriter() {
+    const output = document.getElementById("cmnd-typed-text");
+    const template = document.getElementById("cmnd-text-template");
+    const main = document.getElementById("main-content");
+    const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-const Navbar = ({chatName}) => {
-  return (
-    <nav className="nav">
-      <ul className="nav__list">
-        <li className="nav__item">File</li>
-        <li className="nav__item">Edit</li>
-        <li className="nav__item">Insert</li>
-      </ul>
-      <span className="nav__warning-level">{chatName}'s Warning Level: 0%</span>
-    </nav>
-  );
-}
+    if (!output || !template || !document.body.classList.contains("home")) {
+      return;
+    }
 
-const MessageItem = ({message, screenName, className}) => {
-  const { text, id } = message;
-  return (
-    <div className={`message-item ${className}`}>
-      <div className="message-item__screenname">{screenName}:</div>
-      {text}
-    </div>
-  )
-}
+    const fullText = template.textContent.replace(/^\n/, "").trimEnd();
+    let index = 0;
+    let timeoutId = null;
+    let isComplete = false;
 
-const MessageList = (props) => {
-  const { messageData, screenName, chatName } = props;
-  const currentMessage = { text: "Yo! Wanna get some ramen?", id: 1 };
-  return (
-    <div className="message-list">
-      <div className="message-list__container">
-        <MessageItem
-          message={currentMessage}
-          className="message-item--other"
-          screenName={chatName}
-        />
-        { messageData.map((message, i) => {
-            return (
-              <MessageItem message={message} screenName={screenName} key={i}/>
-            );
-          })
+    if (prefersReducedMotion) {
+      output.textContent = fullText;
+      output.classList.remove("is-typing");
+      return;
+    }
+
+    output.textContent = "";
+    output.classList.add("is-typing");
+
+    function completeTyping() {
+      if (isComplete) {
+        return;
+      }
+
+      if (timeoutId) {
+        window.clearTimeout(timeoutId);
+      }
+
+      output.textContent = fullText;
+      output.classList.remove("is-typing");
+      isComplete = true;
+
+      output.removeEventListener("click", completeTyping);
+      if (main) {
+        main.removeEventListener("click", completeTyping);
+      }
+    }
+
+    function typeNextChar() {
+      if (isComplete) {
+        return;
+      }
+
+      if (index >= fullText.length) {
+        output.classList.remove("is-typing");
+        isComplete = true;
+        output.removeEventListener("click", completeTyping);
+        if (main) {
+          main.removeEventListener("click", completeTyping);
         }
-      </div>
-    </div>
-  );
-}
+        return;
+      }
 
-const CustomizeRow = (props) => {
-  return (
-    <div className='customize-row'>
-      <div className='customize-row__set'>
-        <button className='customize-row__button text-blue'>A</button>
-        <button className='customize-row__button background-blue'>A</button>
-      </div>
+      const nextChar = fullText.charAt(index);
+      output.textContent += nextChar;
+      index += 1;
 
-      <div className='customize-row__set'>
-        <button className='customize-row__button small-a'>A</button>
-        <button className='customize-row__button medium-a'>A</button>
-        <button className='customize-row__button large-a'>A</button>
-      </div>
+      let delay = 22;
+      if (nextChar === "\n") {
+        delay = 110;
+      } else if (nextChar === " ") {
+        delay = 10;
+      }
 
-      <div className='customize-row__set'>
-        <button className='customize-row__button bold-text'>B</button>
-        <button className='customize-row__button italic-text'>I</button>
-        <button className='customize-row__button underline-text'>u</button>
-      </div>
-      <div className='customize-row__set'>
-        <button className='customize-row__button link-text'>link</button>
-        <button className="customize-row__button">
-          <img src="http://www.jesush.com/wp-content/uploads/2008/07/happy10.gif" />
-        </button>
-      </div>
-    </div>
-  );
-}
+      timeoutId = window.setTimeout(typeNextChar, delay);
+    }
 
-const MessageForm = ({value, addedMessage, onChange}) => {
-  const disabledClass = !value.length ? 'message-form__submit--disabled' : null;
-  return (
-    <form className="message-form" onSubmit={(e)=> {addedMessage(e, value)}}>
-      <textarea
-        className="message-form__textarea"
-        value={value}
-        onChange={onChange}
-      />
-      <div className="message-form__actions">
-        <button
-          type="button"
-          onClick={(e)=> {addedMessage(e, value)}}
-          disabled={!value.length}
-          className={`message-form__submit ${disabledClass}`}></button>
-      </div>
-    </form>
-  );
-}
+    output.addEventListener("click", completeTyping);
+    if (main) {
+      main.addEventListener("click", completeTyping);
+    }
 
-let messageId = 0;
-
-class InstantMessenger extends React.Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      chatName: "Ram3nHog",
-      screenName: "CodePenner92",
-      data: [],
-      value: ""
-    };
+    typeNextChar();
   }
 
-  addedMessage = (e, val) => {
-    e.preventDefault();
-    const message = {text: val, id: messageId++};
-    this.state.data.push(message);
-    this.setState({data: this.state.data, value: ""});
-  };
-  
-  handleChange = (event) => {
-    this.setState({value: event.target.value});
-  };
-  
-  render() {
-    const { data, chatName, screenName, value } = this.state;
-    return (
-      <div className="instant-messenger">
-        <Title chatName={chatName} />
-        <Navbar chatName={chatName} />
-        <MessageList
-          messageData={data}
-          screenName={screenName}
-          chatName={chatName}
-        />
-        <CustomizeRow />
-        <MessageForm
-          addedMessage={this.addedMessage}
-          onChange={this.handleChange}
-          value={value}
-        />
-      </div>
-    );
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", startTypewriter);
+  } else {
+    startTypewriter();
   }
-}
-
-ReactDOM.render(<InstantMessenger/>, document.getElementById('app'));
+})();
